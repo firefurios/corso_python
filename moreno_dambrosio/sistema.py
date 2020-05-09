@@ -11,7 +11,7 @@ T=int(input("inserisci il numero di giorni in cui studiare il moto: "))
 dt=float(input("inserisci il timestep in giorni: "))
 M=float(input("inserisci la massa della stella: "))
 N=int(T/dt)
-dt=dt*24*60*60
+dth=dt*24*60*60
 rx=np.zeros(num)
 ry=np.zeros(num)
 rz=np.zeros(num)
@@ -32,7 +32,7 @@ for i in range(num):
 	vy[i]=1000*float(input())
 	vz[i]=1000*float(input())
 
-b=Planet(M,m,rx,ry,rz,vx,vy,vz,dt,num,N)
+b=Planet(M,m,rx,ry,rz,vx,vy,vz,dth,num,N)
 
 px=b.pos()[:,:,0]
 py=b.pos()[:,:,1]
@@ -49,7 +49,7 @@ else:
 	ax.set_xlim3d([min(np.transpose(px).min(1))-1000,max(np.transpose(px).max(1))+1000])
 	ax.set_ylim3d([min(np.transpose(py).min(1))-1000,max(np.transpose(py).max(1))+1000])
 	ax.set_zlim3d([min(np.transpose(pz).min(1))-1000,max(np.transpose(pz).max(1))+1000])
-ax.set_title('Planets Orbits in {} days with {} timestep'.format(T,dt/(24*60*60)))
+ax.set_title('Planets Orbits in {} days with {} timestep'.format(T,dt))
 sun,=ax.plot([],[],[],'o',color='orange',markersize=5)
 orbit=[]
 planet=[]
